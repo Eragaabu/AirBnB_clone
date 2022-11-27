@@ -1,19 +1,35 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+"""
+Tests for the Amenity model
+"""
+
+
+import unittest
+import datetime
+
 from models.amenity import Amenity
 
 
-class test_Amenity(test_basemodel):
-    """ """
+class TestAmenity(unittest.TestCase):
+    """Testing the Amenity Module"""
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "Amenity"
-        self.value = Amenity
+    def setUp(self):
+        """An instance just for tests"""
+        self.a1 = Amenity()
+        self.a2 = Amenity()
 
-    def test_name2(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.name), str)
+    def test_instances(self):
+        """Test the instances"""
+        self.assertTrue(isinstance(self.a1, Amenity))
+        self.assertTrue(isinstance(self.a2, Amenity))
+        self.assertTrue(hasattr(self.a1, "name"))
+
+    def test_name(self):
+        """test the name"""
+        self.assertEqual(type(self.a1.name), str)
+        self.assertEqual(self.a1.name, "")
+        self.assertNotEqual(self.a1.name, None)
+
+
+if __name__ == '__main__':
+    unittest.main()
